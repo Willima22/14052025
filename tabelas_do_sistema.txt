@@ -1,0 +1,57 @@
+localhost:3306/opapopol_02052025/clientes/		https://s1083.usc1.mysecurecloudhost.com:2083/cpsess5899070814/3rdparty/phpMyAdmin/index.php?route=/table/sql&db=opapopol_02052025&table=clientes
+
+   Mostrando registros 0 - 24 (105 no total, Consulta levou 1.5150 segundos.)
+
+
+SELECT
+  t.TABLE_NAME          AS tabela,
+  c.COLUMN_NAME         AS coluna,
+  c.COLUMN_TYPE         AS tipo,
+  c.IS_NULLABLE         AS permite_nulo,
+  c.COLUMN_KEY          AS chave,
+  c.EXTRA               AS extra,
+  kcu.REFERENCED_TABLE_NAME   AS tabela_referenciada,
+  kcu.REFERENCED_COLUMN_NAME  AS coluna_referenciada
+FROM
+  information_schema.TABLES AS t
+  JOIN information_schema.COLUMNS AS c
+    ON c.TABLE_SCHEMA = t.TABLE_SCHEMA
+   AND c.TABLE_NAME   = t.TABLE_NAME
+  LEFT JOIN information_schema.KEY_COLUMN_USAGE AS kcu
+    ON kcu.TABLE_SCHEMA          = t.TABLE_SCHEMA
+   AND kcu.TABLE_NAME            = t.TABLE_NAME
+   AND kcu.COLUMN_NAME           = c.COLUMN_NAME
+   AND kcu.REFERENCED_TABLE_NAME IS NOT NULL
+WHERE
+  t.TABLE_SCHEMA = DATABASE()
+ORDER BY
+  t.TABLE_NAME,
+  c.ORDINAL_POSITION;
+
+
+tabela	coluna	tipo	permite_nulo	chave	extra	tabela_referenciada	coluna_referenciada	
+agendamentos_recorrentes	id	int(11)	NO	PRI	auto_increment	NULL	NULL	
+agendamentos_recorrentes	cliente_id	int(11)	NO	MUL		NULL	NULL	
+agendamentos_recorrentes	tipo_postagem	varchar(20)	NO			NULL	NULL	
+agendamentos_recorrentes	formato	varchar(20)	NO			NULL	NULL	
+agendamentos_recorrentes	frequencia	varchar(20)	NO			NULL	NULL	
+agendamentos_recorrentes	dia_semana	int(1)	YES			NULL	NULL	
+agendamentos_recorrentes	dia_mes	int(2)	YES			NULL	NULL	
+agendamentos_recorrentes	hora	time	NO			NULL	NULL	
+agendamentos_recorrentes	legenda	text	YES			NULL	NULL	
+agendamentos_recorrentes	hashtags	text	YES			NULL	NULL	
+agendamentos_recorrentes	arquivo_path	varchar(255)	YES			NULL	NULL	
+agendamentos_recorrentes	ativo	tinyint(1)	NO	MUL		NULL	NULL	
+agendamentos_recorrentes	usuario_id	int(11)	NO			NULL	NULL	
+agendamentos_recorrentes	data_criacao	datetime	NO			NULL	NULL	
+agendamentos_recorrentes	ultima_execucao	datetime	YES			NULL	NULL	
+agendamentos_recorrentes	proxima_execucao	datetime	YES	MUL		NULL	NULL	
+clientes	id	int(11)	NO	PRI	auto_increment	NULL	NULL	
+clientes	nome_cliente	varchar(100)	NO			NULL	NULL	
+clientes	logomarca	varchar(255)	YES			NULL	NULL	
+clientes	instagram	varchar(50)	NO			NULL	NULL	
+clientes	id_instagram	varchar(50)	NO			NULL	NULL	
+clientes	id_grupo	varchar(50)	NO			NULL	NULL	
+clientes	conta_anuncio	varchar(100)	NO			NULL	NULL	
+clientes	link_business	varchar(255)	NO			NULL	NULL	
+clientes	data_criacao	timestamp	NO			NULL	NULL	
