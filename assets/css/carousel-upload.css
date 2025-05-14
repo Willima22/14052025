@@ -1,0 +1,241 @@
+/**
+ * Estilos para a interface de upload, visualização e ordenação de imagens em carrossel
+ */
+
+.carousel-upload-container {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+.carousel-upload-area {
+  border: 2px dashed #ccc;
+  padding: 40px;
+  text-align: center;
+  margin-bottom: 20px;
+  border-radius: 8px;
+  transition: all 0.3s;
+  background-color: #f9f9f9;
+}
+
+.carousel-upload-area.active {
+  border-color: #6CBD45;
+  background-color: rgba(108, 189, 69, 0.05);
+}
+
+.carousel-upload-area input[type="file"] {
+  display: none;
+}
+
+.carousel-upload-area label {
+  cursor: pointer;
+  color: #6CBD45;
+  font-weight: bold;
+}
+
+.carousel-upload-area .upload-icon {
+  font-size: 3rem;
+  color: #6CBD45;
+  margin-bottom: 15px;
+  display: block;
+}
+
+.carousel-preview-container {
+  margin-bottom: 30px;
+}
+
+.carousel-preview-container h4 {
+  margin-bottom: 15px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.media-type-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 0.8rem;
+  z-index: 2;
+}
+
+.media-type-badge.image {
+  background-color: #0d6efd;
+}
+
+.media-type-badge.video {
+  background-color: #dc3545;
+}
+
+.carousel-counter {
+  background-color: #0a1c30;
+  color: white;
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: normal;
+}
+
+.sortable-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+  gap: 15px;
+  margin-bottom: 30px;
+}
+
+.image-item {
+  position: relative;
+  border-radius: 8px;
+  overflow: hidden;
+  cursor: move;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+  aspect-ratio: 1;
+}
+
+.image-item .preview-media {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.image-item video {
+  background-color: #000;
+}
+
+.image-overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.3);
+  opacity: 0;
+  transition: opacity 0.3s;
+  display: flex;
+  justify-content: space-between;
+}
+
+.image-item:hover .image-overlay {
+  opacity: 1;
+}
+
+.position-badge {
+  background: #6CBD45;
+  color: white;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  font-size: 0.8rem;
+}
+
+.remove-image {
+  background: #dc3545;
+  color: white;
+  border: none;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 8px;
+  cursor: pointer;
+  font-size: 0.8rem;
+  padding: 0;
+  line-height: 1;
+}
+
+.sortable-ghost {
+  opacity: 0.5;
+}
+
+.sortable-chosen {
+  box-shadow: 0 0 0 2px #6CBD45;
+}
+
+.sortable-drag {
+  opacity: 0.8;
+}
+
+/* Toast notifications */
+.toast {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  padding: 12px 20px;
+  border-radius: 4px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  z-index: 9999;
+  transition: transform 0.3s, opacity 0.3s;
+  transform: translateY(-20px);
+  opacity: 0;
+  max-width: 350px;
+}
+
+.toast.show {
+  transform: translateY(0);
+  opacity: 1;
+}
+
+.toast-error {
+  background-color: #f8d7da;
+  border-left: 4px solid #dc3545;
+  color: #721c24;
+}
+
+.toast-success {
+  background-color: #d4edda;
+  border-left: 4px solid #28a745;
+  color: #155724;
+}
+
+.toast-content {
+  display: flex;
+  align-items: center;
+}
+
+.toast-content i {
+  margin-right: 10px;
+  font-size: 1.2rem;
+}
+
+/* Acessibilidade */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+  .sortable-grid {
+    grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    gap: 10px;
+  }
+  
+  .carousel-upload-area {
+    padding: 20px;
+  }
+  
+  .toast {
+    left: 20px;
+    right: 20px;
+    max-width: none;
+  }
+}

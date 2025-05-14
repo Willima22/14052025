@@ -1,0 +1,216 @@
+/**
+ * Estilos para funcionalidade de drag-and-drop
+ */
+
+/* Área de upload com drag-and-drop habilitado */
+.drag-drop-enabled {
+    transition: all 0.3s ease;
+    cursor: pointer;
+    position: relative;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    padding: 20px;
+    text-align: center;
+    background-color: #f8f9fa;
+}
+
+/* Estilo quando um arquivo está sendo arrastado sobre a área */
+.drag-over {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-color: #0d6efd !important;
+    border-style: dashed !important;
+    border-width: 3px !important;
+    box-shadow: 0 0 15px rgba(13, 110, 253, 0.4);
+    transform: scale(1.02);
+}
+
+/* Mensagem de instrução para drag-and-drop */
+.drag-drop-enabled::after {
+    content: "ou arraste e solte arquivos aqui";
+    display: block;
+    font-size: 0.875rem;
+    color: #6c757d;
+    margin-top: 0.5rem;
+}
+
+/* Animação para a área de drag-and-drop */
+@keyframes pulse {
+    0% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0.4);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(13, 110, 253, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(13, 110, 253, 0);
+    }
+}
+
+.drag-over {
+    animation: pulse 1.5s infinite;
+}
+
+/* Slots de carrossel */
+.carousel-slots-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.carousel-slot {
+    width: 100%;
+    aspect-ratio: 1/1;
+    border: 2px dashed #dee2e6;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+.carousel-slot:hover {
+    border-color: #0d6efd;
+    background-color: rgba(13, 110, 253, 0.05);
+}
+
+.carousel-slot.drag-over {
+    background-color: rgba(13, 110, 253, 0.1);
+    border-color: #0d6efd;
+    box-shadow: 0 0 0 0.25rem rgba(13, 110, 253, 0.25);
+}
+
+.carousel-slot .slot-number {
+    position: absolute;
+    top: 5px;
+    left: 5px;
+    background-color: #0d6efd;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    font-weight: bold;
+    z-index: 2;
+}
+
+.carousel-slot .upload-icon {
+    font-size: 24px;
+    color: #6c757d;
+}
+
+.carousel-slot.has-file {
+    border-style: solid;
+    border-color: #dee2e6;
+}
+
+.carousel-slot .slot-preview {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+    top: 0;
+    left: 0;
+}
+
+.carousel-slot .slot-remove-btn {
+    position: absolute;
+    top: 5px;
+    right: 5px;
+    background-color: #dc3545;
+    color: white;
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 12px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.carousel-slot:hover .slot-remove-btn {
+    opacity: 1;
+}
+
+/* Contador de carrossel */
+.carousel-counter {
+    font-size: 14px;
+    font-weight: bold;
+    color: #6c757d;
+    margin-left: 10px;
+}
+
+.carousel-counter.counter-full {
+    color: #dc3545;
+}
+
+/* Visualização de upload */
+.upload-preview {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    margin-top: 10px;
+}
+
+.preview-item {
+    width: 150px;
+    border: 1px solid #dee2e6;
+    border-radius: 8px;
+    overflow: hidden;
+    padding: 5px;
+    background-color: white;
+}
+
+.image-preview-wrapper {
+    width: 100%;
+    aspect-ratio: 1/1;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: #f8f9fa;
+    border-radius: 4px;
+}
+
+.img-preview, .video-preview {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+}
+
+.file-info {
+    margin-top: 5px;
+    font-size: 12px;
+}
+
+/* Responsividade */
+@media (max-width: 768px) {
+    .carousel-slots-container {
+        grid-template-columns: repeat(auto-fill, minmax(100px, 1fr));
+    }
+    
+    .preview-item {
+        width: 120px;
+    }
+}
+
+@media (max-width: 576px) {
+    .carousel-slots-container {
+        grid-template-columns: repeat(auto-fill, minmax(80px, 1fr));
+    }
+    
+    .preview-item {
+        width: 100px;
+    }
+}

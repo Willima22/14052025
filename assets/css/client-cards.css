@@ -1,0 +1,97 @@
+/* Estilos para os cartões de cliente */
+.client-logo {
+    max-height: 100px;
+    object-fit: contain;
+}
+
+.client-placeholder-logo {
+    border: 1px dashed #ccc;
+    border-radius: 5px;
+}
+
+.card-title {
+    font-size: 1.1rem;
+    font-weight: 600;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.client-info {
+    font-size: 0.9rem;
+}
+
+.card-footer .btn {
+    padding: 0.25rem 0.5rem;
+}
+
+/* Adicionar espaço entre os cartões */
+.client-card-col {
+    margin-bottom: 20px;
+}
+
+/* Estilo para cartões inativos */
+.card.border-danger .card-header {
+    background-color: rgba(220, 53, 69, 0.1);
+}
+
+/* Melhorar visualização em dispositivos móveis */
+@media (max-width: 767.98px) {
+    .client-card-col {
+        width: 100%;
+    }
+}
+
+/* Botões de ação */
+.btn-view {
+    background-color: #17a2b8;
+    color: white;
+}
+
+.btn-edit {
+    background-color: #ffc107;
+    color: white;
+}
+
+.btn-delete {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-history {
+    background-color: #6c757d;
+    color: white;
+}
+
+.btn-active {
+    background-color: #28a745;
+    color: white;
+}
+
+.btn-inactive {
+    background-color: #dc3545;
+    color: white;
+}
+
+.btn-copy {
+    background-color: #6610f2;
+    color: white;
+}
+
+/* Efeitos de hover nos cartões */
+.card {
+    transition: all 0.3s ease;
+}
+
+.card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
+
+/* Melhorar a exibição das logomarcas */
+.text-center.mb-3 {
+    height: 100px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
